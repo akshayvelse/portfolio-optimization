@@ -5,9 +5,12 @@ An institutional portfolio construction and backtesting system comparing 4 syste
 ## Directory Architecture
 
 ```
-03_portfolio_optimization/
+portfolio-optimization/
 ├── README.md
 ├── backtest_tear_sheet.md
+├── requirements.txt
+├── pyproject.toml
+├── Makefile
 ├── data/
 │   ├── prices.csv
 │   └── market_caps.csv
@@ -17,10 +20,12 @@ An institutional portfolio construction and backtesting system comparing 4 syste
 │   ├── optimizers.py
 │   ├── backtester.py
 │   └── tear_sheet_plots.py
-└── output/
-    ├── cumulative_returns_drawdown.png
-    ├── weight_allocation_comparison.png
-    └── performance_summary.csv
+├── output/
+│   ├── cumulative_returns_drawdown.png
+│   ├── weight_allocation_comparison.png
+│   └── performance_summary.csv
+└── tests/
+    └── test_portfolio_opt.py
 ```
 
 ## Strategies Evaluated
@@ -45,14 +50,17 @@ An institutional portfolio construction and backtesting system comparing 4 syste
 
 ```bash
 # Retrieve and cache universe daily prices and market caps
-python 03_portfolio_optimization/src/universe.py
+python src/universe.py
 
 # Run unit optimization algorithms
-python 03_portfolio_optimization/src/optimizers.py
+python src/optimizers.py
 
 # Execute walk-forward simulation and output performance summary
-python 03_portfolio_optimization/src/backtester.py
+python src/backtester.py
 
 # Render institutional tear sheet visual charts
-python 03_portfolio_optimization/src/tear_sheet_plots.py
+python src/tear_sheet_plots.py
+
+# Execute test suite
+pytest -v
 ```
