@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=65.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "portfolio-optimization"
+version = "1.0.0"
+description = "Quantitative portfolio optimization, Ledoit-Wolf shrinkage, and walk-forward friction backtesting"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26.0",
+    "pandas>=2.1.0",
+    "scipy>=1.11.0",
+    "yfinance>=0.2.35",
+    "matplotlib>=3.8.0",
+    "pytest>=7.4.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --strict-markers"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::FutureWarning",
+]
